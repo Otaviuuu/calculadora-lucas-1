@@ -53,3 +53,21 @@ def test_divisao():
 
     #ponto flutuante
     assert calc.divisao(7.5, 2.5) == 3.0
+
+import pytest
+
+def test_valores_invalidos():
+    calc = Calculadora()
+
+    with pytest.raises(TypeError):
+        calc.soma("2", 3)
+
+    with pytest.raises(TypeError):
+        calc.multiplicacao(5, "x")
+
+
+def test_divisao_por_zero():
+    calc = Calculadora()
+
+    with pytest.raises(ZeroDivisionError):
+        calc.divisao(10, 0)
